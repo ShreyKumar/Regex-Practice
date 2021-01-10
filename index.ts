@@ -98,3 +98,81 @@
 
 // console.log(phones.map((p) => p.match(validPhone)))
 
+// const regex17 = /The\.$/
+
+// const txt = "The The The."
+
+// console.log(txt.match(regex17))
+
+// const regex18 = /^first.$/
+// const txt2 = "first. asd asdasdas sad "
+
+// console.log(txt2.match(regex18))
+
+// const regex19 = /^The/igm
+// const txt3 = `
+//   The\n
+//   The\n
+//   The\n
+//   The\n
+//   Hello
+// `
+
+// console.log(txt3.match(regex19))
+
+// const txt4 = 'plant plan plant plant plan'
+
+// const regex20 = /\bplan\b/
+// const regex21 = /\Ban\B/g
+
+// console.log(txt4.match(regex20))
+// console.log(txt4.match(regex21))
+
+
+// const text1 = 'Each and every Tuesday, at the beginning of the day, we hold a staff meeting. At the Tuesday staff meeting, you will need to make a report on the past weeks progress, and you will receive assignments for the following Tuesday. Just be aware that somedays this Tuesday meeting might not occur. When that happens, we will make an announcement.';
+
+// const regex = /\b[mtwfs][a-z]{1,4}[nsir]day\b/gi
+// const newText = text1.replace(regex, "Monday")
+
+// console.log({ newText })
+
+// const pipRegex = /\bmonday|tuesday|wednesday|thursday|friday|saturday|sunday\b/gi
+
+// const pipRegex2 = /\b[a-z]{3}day\b|\b[a-z]{4}day\b|\b[a-z]{6}day\b/ig
+// const grouping = /\b(monday|tuesday|wednesday)\b/g
+
+// const ascii = 'a3w3b5n4 213123 asdsada j3j4b7y6 b5b2b4b3asdwe23 b1s2i4y77d7'
+// const asciiRegex = /([a-d][1-5]){5}/g
+
+const date = '2018/03/09'
+const dateRegex = /^([0-9]{4})[-./](\d{1,2})[-./](\d{1,2})$/g
+const matches = dateRegex.exec(date)
+
+console.log(matches)
+
+let year, month, day
+console.log(dateRegex.test(date))
+if (dateRegex.test(date)) {
+  year = matches[1]
+  month = matches[2]
+  day = matches[3]
+} else {
+  console.log('wrong format')
+}
+
+const capturingGroup = /^(\d{4})([-./])(\d{1,2})\2(\d{1,2})/g
+const colonParentheses = /^(?:\d{4})([-./])(\d{1,2})\1(\d{1,2})$/g
+
+console.log(year, month, day)
+console.log(capturingGroup.exec(date))
+console.log(date.match(colonParentheses))
+
+const htmlTags = /<(\w*)>\w*<\/\1>/gi
+
+
+const google = 'https://google.com'
+const urls = /^(?=https:\/\/)(www\.)?[a-z]*(?=\.com)$/gi
+
+console.log(google.match(urls))
+
+const pwds = /^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9)]).*$/g
