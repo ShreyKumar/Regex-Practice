@@ -144,35 +144,115 @@
 // const ascii = 'a3w3b5n4 213123 asdsada j3j4b7y6 b5b2b4b3asdwe23 b1s2i4y77d7'
 // const asciiRegex = /([a-d][1-5]){5}/g
 
-const date = '2018/03/09'
-const dateRegex = /^([0-9]{4})[-./](\d{1,2})[-./](\d{1,2})$/g
-const matches = dateRegex.exec(date)
+// const date = '2018/03/09'
+// const dateRegex = /^([0-9]{4})[-./](\d{1,2})[-./](\d{1,2})$/g
+// const matches = dateRegex.exec(date)
 
-console.log(matches)
+// console.log(matches)
 
-let year, month, day
-console.log(dateRegex.test(date))
-if (dateRegex.test(date)) {
-  year = matches[1]
-  month = matches[2]
-  day = matches[3]
-} else {
-  console.log('wrong format')
+// let year, month, day
+// console.log(dateRegex.test(date))
+// if (dateRegex.test(date)) {
+//   year = matches[1]
+//   month = matches[2]
+//   day = matches[3]
+// } else {
+//   console.log('wrong format')
+// }
+
+// const capturingGroup = /^(\d{4})([-./])(\d{1,2})\2(\d{1,2})/g
+// const colonParentheses = /^(?:\d{4})([-./])(\d{1,2})\1(\d{1,2})$/g
+
+// console.log(year, month, day)
+// console.log(capturingGroup.exec(date))
+// console.log(date.match(colonParentheses))
+
+// const htmlTags = /<(\w*)>\w*<\/\1>/gi
+
+
+// const google = 'https://google.com'
+// const urls = /^(?=https:\/\/)(www\.)?[a-z]*(?=\.com)$/gi
+
+// console.log(google.match(urls))
+
+// const pwds = /^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9)]).*$/g
+
+// let names = ["Jensen, Dale", "Smith, Andrea", "Jorgensen, Michael", "Vasefi, Annika", "Lopez, Monica", "Crockett, Steven"]
+
+// const namesRegex = /([A-Z]{1}[a-z]*), ([A-Z]{1}[a-z]*)/
+
+// const reversedNames = names.map((name) => {
+//   const matches = namesRegex.exec(name)s
+//   if (matches && matches[1] && matches[2]) {
+//     return `${matches[2]} ${matches[1]}`
+//   }
+// })
+
+// console.log({ reversedNames })
+
+// const unicode = /^.-clef/
+
+
+const validateTwitterHandles = /^@?(\w+)$/g
+const handle = '@beatsbydrshrey'
+console.log(validateTwitterHandles.exec(handle))
+
+const validateEmails = /^[^\s@]+@[^\s@.]+\.[^\s@.]+$/g
+const email = 'asd@gmail.com'
+console.log(validateEmails.exec(email))
+
+// 1 num, 1 special character, 1 uppercase, 1 lowercase, 8 characters
+const validatePwds = /^.{8,}(?=[0-9])(?=[A-Z])(?=[a-z])(?=[^0-9a-zA-Z])$/g
+
+const names = ["Smith, James", "Peterson, Alyssa", "Johnson, Lynette", "Lopez, Tony"]
+const newNames = names.map((name) => {
+  return name.replace(/(\w+), (\w+)/, "$2 $1")
+})
+
+console.log({ newNames })
+
+const txt = "Let's put several different words more text together to see what we can match."
+
+const matchWord = /\b(?:words\W+(?:\w+\W+){0,5}together)\b/g
+
+console.log(matchWord.test(txt))
+
+const date1 = '24/06/1966'
+const date2 = '55/3-/0000'
+const date3 = '31/02/2021'
+
+const dateChecker = /^\d{1,2}(\/)\d{1,2}\1(\d{2}|\d{4})$/g
+
+console.log(dateChecker.test(date1))
+console.log(dateChecker.test(date2))
+console.log(dateChecker.test(date3))
+
+const dateChecker2 = /^(3[01]|[12][0-9]|0?[1-9])\/(1[0-2]|0?[1-9])\/([0-9]{2})?[0-9]{2}$/g
+
+console.log(dateChecker2.test(date1))
+console.log(dateChecker2.test(date2)) // should fail
+console.log(dateChecker2.test(date3))
+
+
+let phrase = "First number: 32, and a second number 100. Here is the last number 15.";
+const getNums = /\d+/g
+
+const sum = phrase.match(getNums).reduce((num, total) => parseInt(total, 10) + parseInt(num, 10))
+console.log({ sum })
+
+console.log(getNums.exec(phrase))
+console.log(getNums.exec(phrase))
+console.log(getNums.exec(phrase))
+
+const getNums2 = /\d+/g
+
+let match = getNums2.exec(phrase)
+let sum2 = 0
+while (match) {
+  console.log(match[0])
+  sum2 += parseInt(match[0], 10)
+  match = getNums2.exec(phrase)
 }
 
-const capturingGroup = /^(\d{4})([-./])(\d{1,2})\2(\d{1,2})/g
-const colonParentheses = /^(?:\d{4})([-./])(\d{1,2})\1(\d{1,2})$/g
+console.log({ sum2 })
 
-console.log(year, month, day)
-console.log(capturingGroup.exec(date))
-console.log(date.match(colonParentheses))
-
-const htmlTags = /<(\w*)>\w*<\/\1>/gi
-
-
-const google = 'https://google.com'
-const urls = /^(?=https:\/\/)(www\.)?[a-z]*(?=\.com)$/gi
-
-console.log(google.match(urls))
-
-const pwds = /^(?=.{8,})(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9)]).*$/g
